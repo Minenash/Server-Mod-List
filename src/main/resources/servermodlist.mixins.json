@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.minenash.servermodlist.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MultiplayerServerListPingerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "ServerMetadataMixin",
+    "ServerMetadataMixin$ServerMetadataDeserializerMixin"
+  ]
+}

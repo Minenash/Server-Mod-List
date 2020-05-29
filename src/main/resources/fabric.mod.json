@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "servermodlist",
+  "version": "${version}",
+  "name": "Server Mod List",
+  "description": "Allows the server to tell the client what mods it requires, recommend, and supports",
+  "authors": [
+    "Minenash"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/servermodlist/icon.png",
+  "environment": "client",
+  "mixins": [
+    "servermodlist.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.0",
+    "modmenu": ">=1.8.0",
+    "minecraft": ">=1.15"
+  },
+  "custom": {
+  }
+}
