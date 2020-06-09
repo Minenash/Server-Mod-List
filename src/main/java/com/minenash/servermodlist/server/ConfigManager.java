@@ -59,9 +59,7 @@ public class ConfigManager {
     private static JsonObject generateConfig() {
 
         JsonArray required = new JsonArray();
-        JsonArray recommended = new JsonArray();
         JsonArray supports = new JsonArray();
-        JsonArray hidden = new JsonArray();
 
         for (ModContainer mod : FabricLoader.getInstance().getAllMods()) {
             ModMetadata meta = mod.getMetadata();
@@ -70,14 +68,10 @@ public class ConfigManager {
             if (id.equals("minecraft") || id.equals("fabricloader") || id.equals("fabric-api-base") || FABRIC_PATTERN.matcher(id).matches())
                 continue;
 
-            if (id.equals("fabric"))
-                hidden.add(id);
-            else if (id.equals("servermodlist"))
+            if (id.equals("servermodlist"))
                 supports.add(id);
-            else if ( (meta.containsCustomValue("modmenu:api") && meta.getCustomValue("modmenu:api").getAsBoolean())
-                    || (meta.containsCustomValue("modmenu:parent") && meta.getCustomValue("modmenu:parent").getAsBoolean()))
-                hidden.add(id);
-            else
+            else if ( !id.equals("fabric") && !(meta.containsCustomValue("modmenu:api") && meta.getCustomValue("modmenu:api").getAsBoolean())
+                    && !(meta.containsCustomValue("modmenu:parent") && meta.getCustomValue("modmenu:parent").getAsBoolean()))
                 required.add(id);
         }
 
@@ -86,10 +80,9 @@ public class ConfigManager {
 
         JsonObject mods = new JsonObject();
         mods.add("required", required);
-        mods.add("recommended", recommended);
-        mods.add("hidden", hidden);
+        mods.add("recommended", new JsonArray());
         mods.add("supports", supports);
-
+        mods.add("secret", new JsonArray());
         config.add("mods", mods);
         return config;
     }
