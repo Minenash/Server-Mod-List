@@ -2,14 +2,20 @@
   "required": true,
   "package": "com.minenash.servermodlist.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "com.minenash.servermodlist.mixin.PingerPacketListnerMixinPlugin",
   "client": [
-    "MultiplayerServerListPingerMixin"
+    "client.ConfirmChatLinkScreenMixin",
+    "client.MultiplayerScreenMixin",
+    "client.MultiplayerServerListPingerPacketListnerMixin",
+    "client.MultiplayerServerListWidgetServerEntryMixin",
+    "client.ServerMetadataMixin",
+    "client.ServerMetadataMixin$ServerMetadataDeserializerMixin",
+    "dev.MultiplayerServerListPingerPacketListnerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [
-    "ServerMetadataMixin",
-    "ServerMetadataMixin$ServerMetadataDeserializerMixin"
+  "server": [
+    "server.ServerMetadataDeserializerMixin"
   ]
 }

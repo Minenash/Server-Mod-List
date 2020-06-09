@@ -10,13 +10,22 @@
   "contact": {},
   "license": "MIT",
   "icon": "assets/servermodlist/icon.png",
-  "environment": "client",
   "mixins": [
     "servermodlist.mixins.json"
   ],
+  "entrypoints": {
+    "client": [
+      "com.minenash.servermodlist.client.ClientEntryPoint"
+    ],
+    "server": [
+      "com.minenash.servermodlist.server.ServerEntryPoint"
+    ],
+    "modmenu": [
+      "com.minenash.servermodlist.client.config.ModMenuEntryPoint"
+    ]
+  },
   "depends": {
     "fabricloader": ">=0.7.0",
-    "modmenu": ">=1.8.0",
     "minecraft": ">=1.15"
   },
   "custom": {
